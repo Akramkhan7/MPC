@@ -20,10 +20,17 @@
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
+<<<<<<< HEAD
     "mysql2": "^3.18.0",
     "nodemailer": "^8.0.1",
     "nodemon": "^3.1.14",
     "pdfkit": "^0.17.2",
     "qrcode": "^1.5.4"
+=======
+    "mysql2": "^3.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+>>>>>>> 32d91439cb39b8d65c0caa269259d542717ab394
   }
 }
