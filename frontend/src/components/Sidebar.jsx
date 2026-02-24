@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   // Colors from theme spec: Surface #F5F5F5, Hint #A0A0A0
   const activeClass =
-    "flex items-center gap-3 px-4 py-3 rounded-xl bg-[#ECECEC] text-[#1A1A1A] font-bold transition-all";
+    "flex items-center gap-3 px-4 py-3 rounded-xl bg-[#ECECEC] text-[#0066FF] font-bold transition-all ";
   const inactiveClass =
     "flex items-center gap-3 px-4 py-3 rounded-xl text-[#666666] hover:bg-[#E0E0E0] hover:text-[#1A1A1A] transition-all group";
 
