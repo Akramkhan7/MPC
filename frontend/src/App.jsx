@@ -19,35 +19,24 @@ const App = () => {
 
   return (
     <Routes>
-  {/* Public Landing Page */}
   <Route path="/" element={<LandingPage />} />
 
-  {/* Login Page */}
   <Route
     path="/login"
     element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
   />
 
-  {/* Protected Admin Routes */}
   <Route
     path="/*"
     element={
       isAuthenticated ? (
-        /* h-screen: Fixes the total height to the viewport.
-           overflow-hidden: Prevents the whole page from scrolling.
-        */
         <div className="flex h-screen bg-[#F9FAFB] font-['Inter',sans-serif] overflow-hidden">
           
-          {/* Sidebar: Sticky by nature because parent is h-screen */}
           <Sidebar />
-
-          {/* Right Side: This container will handle its own scrolling */}
           <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
             
-            {/* Header: Fixed at the top */}
             <Header setIsAuthenticated={setIsAuthenticated} />
             
-            {/* Main Content: This is the scrollable area */}
             <main className="flex-1 overflow-y-auto p-10 custom-scrollbar bg-[#F5F5F5]">
               <Routes>
                 <Route path="/dashboard" element={<DashboardOverview />} />
@@ -57,7 +46,6 @@ const App = () => {
                 <Route path="/history" element={<UploadHistory />} />
                 <Route path="/error-logs" element={<ErrorLogs />} />
                 <Route path="/settings" element={<Settings />} />
-                {/* Add other admin routes here */}
               </Routes>
             </main>
           </div>
