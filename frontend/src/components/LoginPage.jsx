@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Key, Lock } from "lucide-react";
+import API from '../utils/index'; 
+import axios from "axios";
+
 
 const LoginPage = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
@@ -8,17 +11,23 @@ const LoginPage = ({ setIsAuthenticated }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    // Simple Validation (Replace with your actual admin credentials)
-    if (email === "m.akramkhan6690@gmail.com" && password === "a") {
+ // LoginPage.jsx logic change
+const handleLogin = async(e) => {
+  e.preventDefault();
+  try {
+    // USE 'API' INSTEAD OF 'axios'
+    const response = await API.post('/auth/login', { email, password });
+    
+    if(response.status === 200){
+      localStorage.setItem('token', response.data.token);
       setIsAuthenticated(true);
-      navigate("/dashboard"); // Sahi hone par dashboard
-    } else {
-      setError("Invalid email or password. Please try again."); // Galat hone par error
+      navigate('/dashboard');
     }
-  };
+  } catch(err) {
+    // This catches the CORS error or 401 Unauthorized
+    setError("Connection failed. Server might be down or access denied.");
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5] text-[Poppins, sans-serif] p-4">

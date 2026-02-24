@@ -20,6 +20,7 @@ async function register(req, res, next) {
     const email = normalizeEmail(req.body.email);
     const password = String(req.body.password || "");
 
+
     if (!name || !email || !password) {
       return res.status(400).json({
         success: false,

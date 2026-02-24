@@ -13,6 +13,18 @@ const db = mysql.createPool({
   queueLimit: 0,
 });
 
+const initDB = async () => {
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS admins (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(50) NOT NULL ,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password_hash VARCHAR(255) NOT NULL
+    )
+  `);
+  console.log("Table ready");
+};
+
 async function testdb() {
   try {
     const connection = await db.getConnection();
@@ -23,6 +35,4 @@ async function testdb() {
   }
 }
 
-testdb();
-
-module.exports = { db };
+module.exports = { db, testdb, initDB };
