@@ -29,7 +29,7 @@ const Sidebar = () => {
     "flex items-center gap-3 px-4 py-3 rounded-xl text-[#666666] hover:bg-[#E0E0E0] hover:text-[#1A1A1A] transition-all group";
 
   return (
-    <div className="w-55 min-h-screen bg-[#F5F5F5]  flex flex-col justify-between sticky top-0 z-50 font-['Inter',sans-serif]">
+    <div className="w-55 border-r border-[#E0E0E0] min-h-screen bg-[#F5F5F5]  flex flex-col justify-between sticky top-0 z-50 font-['Inter',sans-serif]">
       <div className="flex flex-col h-full py-6 px-6">
         {/* Top Section */}
         <div className="flex flex-col">
