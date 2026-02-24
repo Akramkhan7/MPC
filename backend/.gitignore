@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# env
+.env
+.env.*
+!.env.example
+
+# runtime / uploads
+src/uploads/
+uploads/
+tmp/
+temp/
+
+# logs
+logs/
+*.log
+
+# coverage / tests
+coverage/
+
+# misc
+.DS_Store
+Thumbs.db
