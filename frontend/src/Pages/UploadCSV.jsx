@@ -14,14 +14,11 @@ const UploadCSV = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const baseURL = `${import.meta.env.VITE_BACKEND_URL}/api`;
 
-  // Safe file validation
   const handleFile = (uploadedFile) => {
-    if (
-      uploadedFile &&
-      uploadedFile.name.toLowerCase().endsWith(".csv")
-    ) {
+    if (uploadedFile && uploadedFile.name.toLowerCase().endsWith(".csv")) {
       setFile(uploadedFile);
       setError(null);
       setResult(null);
@@ -31,7 +28,6 @@ const UploadCSV = () => {
     }
   };
 
-  // Upload API
   const handleUpload = async () => {
     if (!file) return;
 
@@ -91,6 +87,7 @@ const UploadCSV = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+
       {/* Drag & Drop */}
       <div
         onDragOver={onDragOver}
@@ -123,50 +120,30 @@ const UploadCSV = () => {
 
       {/* File Preview */}
       {file && (
-        <div className="bg-white border rounded-xl p-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <FileText size={20} className="text-[#0066FF]" />
+        <div className="bg-white border border-[#E0E0E0] rounded-2xl p-4 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-[#F5F5F5] rounded-xl text-[#0066FF]">
+              <FileText size={20} />
+            </div>
             <div>
-              <p className="font-bold">{file.name}</p>
-              <p className="text-xs text-gray-400">
+              <p className="text-sm font-bold text-[#1A1A1A] truncate max-w-[180px]">
+                {file.name}
+              </p>
+              <p className="text-[10px] text-[#A0A0A0] font-bold uppercase tracking-wider">
                 {(file.size / 1024).toFixed(1)} KB
               </p>
             </div>
           </div>
-          <button onClick={() => setFile(null)}>
+          <button
+            onClick={() => setFile(null)}
+            className="p-2 text-[#A0A0A0] hover:text-[#B00020] hover:bg-red-50 rounded-full transition-all"
+          >
             <X size={18} />
           </button>
         </div>
       )}
 
-<<<<<<< HEAD
-        {/* Selected File Card */}
-        {file && (
-          <div className="bg-white border border-[#E0E0E0] rounded-2xl p-4 flex items-center justify-between shadow-sm">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-[#F5F5F5] rounded-xl text-[#0066FF]">
-                <FileText size={20} />
-              </div>
-              <div>
-                <p className="text-sm font-bold text-[#1A1A1A] truncate max-w-[180px]">
-                  {file.name}
-                </p>
-                <p className="text-[10px] text-[#A0A0A0] font-bold uppercase tracking-wider">
-                  {(file.size / 1024).toFixed(1)} KB
-                </p>
-              </div>
-            </div>
-            <button
-              onClick={() => setFile(null)}
-              className="p-2 text-[#A0A0A0] hover:text-[#B00020] hover:bg-red-50 rounded-full transition-all"
-            >
-              <X size={18} />
-            </button>
-          </div>
-        )}
-      </div>
-
-      {/* 3. Action Footer */}
+      {/* Footer Buttons */}
       <div className="flex items-center justify-between pt-6 border-t border-[#E0E0E0]">
         <button
           className="text-sm font-bold text-[#666666] hover:text-[#1A1A1A] transition-colors"
@@ -177,25 +154,15 @@ const UploadCSV = () => {
         >
           Cancel
         </button>
-        <button
-          disabled={!file}
-          className={`px-8 py-3 rounded-full text-sm font-bold transition-all flex items-center gap-2
-            ${
-              file
-                ? " border-[#0066FF] bg-[#0066FF] text-white hover:bg-[#0052CC]"
-                : "bg-[#F5F5F5] text-[#A0A0A0] cursor-not-allowed"
-=======
-      {/* Upload Button */}
-      <div className="flex justify-end">
+
         <button
           onClick={handleUpload}
           disabled={!file || loading}
-          className={`px-8 py-3 rounded-full font-bold transition-all flex items-center gap-2
+          className={`px-8 py-3 rounded-full text-sm font-bold transition-all flex items-center gap-2
             ${
-              file && !loading
+              file
                 ? "bg-[#0066FF] text-white hover:bg-[#0052CC]"
-                : "bg-gray-200 text-gray-400 cursor-not-allowed"
->>>>>>> 5e08767 (Finished)
+                : "bg-[#F5F5F5] text-[#A0A0A0] cursor-not-allowed"
             }`}
         >
           <CheckCircle2 size={18} />
@@ -203,7 +170,7 @@ const UploadCSV = () => {
         </button>
       </div>
 
-      {/* Result Preview */}
+      {/* Result */}
       {result && (
         <div className="bg-white border rounded-2xl p-6 mt-6">
           <h3 className="font-bold text-lg mb-4">Batch Summary</h3>
@@ -256,6 +223,7 @@ const UploadCSV = () => {
           )}
         </div>
       )}
+
     </div>
   );
 };
