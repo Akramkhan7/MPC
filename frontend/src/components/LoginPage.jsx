@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Key, Lock } from "lucide-react";
-import API from '../utils/index'; 
-import axios from "axios";
-
+import API from '../utils/index';
 
 const LoginPage = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
@@ -11,7 +9,6 @@ const LoginPage = ({ setIsAuthenticated }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
- // LoginPage.jsx logic change
 const handleLogin = async(e) => {
   e.preventDefault();
   try {

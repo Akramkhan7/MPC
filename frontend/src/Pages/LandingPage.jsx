@@ -5,7 +5,6 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
-  // Initialize navigate hook
   const navigate = useNavigate();
 
   return (
@@ -21,7 +20,6 @@ const LandingPage = () => {
             <span className="text-xl font-bold tracking-tighter">CertiFlow</span>
           </div>
 
-          {/* Fixed: Redirects to lowercase /dashboard or /login as per App.jsx logic */}
           <button 
             onClick={() => navigate('/dashboard')}
             className="text-sm font-semibold border border-[#E0E0E0] px-6 py-2.5 rounded-full hover:bg-[#F5F5F5] transition-all"
@@ -45,7 +43,6 @@ const LandingPage = () => {
             Designed for KVON Tech Consultancy. A high-performance Node.js & Database architecture to automate the entire credential lifecycle—from CSV ingestion to verifiable PDF delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-            {/* Fixed: Replaced setView with navigate */}
             <button 
               onClick={() => navigate('/dashboard')}
               className="bg-[#1A1A1A] text-white px-10 py-4 rounded-full font-medium hover:bg-black transition-all flex items-center justify-center gap-2 shadow-xl shadow-black/10"
@@ -57,7 +54,6 @@ const LandingPage = () => {
             </button>
           </div>
 
-          {/* Visual Dashboard Placeholder */}
           <div className="relative mx-auto max-w-5xl group">
             <div className="absolute -inset-1 bg-gradient-to-r from-[#7C9CB4] to-[#1A1A1A] rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
             <div className="relative bg-white border border-[#E0E0E0] rounded-2xl shadow-2xl overflow-hidden">

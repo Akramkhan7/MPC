@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
-import LandingPage from "./pages/LandingPage";
+import LandingPage from "./Pages/LandingPage";
 import LoginPage from "./components/LoginPage";
-import DashboardOverview from "./pages/DashboardOverview";
+import DashboardOverview from "./Pages/DashboardOverview";
 import Header from "./components/Header";
 import UploadCSV from "./Pages/UploadCSV";
-import Certificates from "./pages/Certificates";
-import EmailStatus from "./pages/EmailStatus";
-import UploadHistory from "./pages/UploadHistory";
-import ErrorLogs from "./pages/ErrorLogs";
-import Settings from "./pages/Settings";
+import Certificates from "./Pages/Certificates";
+import EmailStatus from "./Pages/EmailStatus";
+import UploadHistory from "./Pages/UploadHistory";
+import ErrorLogs from "./Pages/ErrorLogs";
+import Settings from "./Pages/Settings";
 import { useEffect } from "react";
 import axios from "axios";
 
 const App = () => {
+  const baseURL = `${import.meta.env.VITE_BACKEND_URL}/api`;
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const verifyAuth = async () => {
       const token = localStorage.getItem("token");
-
       if (!token) {
         setIsAuthenticated(false);
         setLoading(false);
@@ -28,14 +28,11 @@ const App = () => {
       }
 
       try {
-        const response = await axios.get(
-          "http://localhost:5005/api/auth/verify",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const response = await axios.get(`${baseURL}/auth/verify`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        });
 
         if (response.data.valid) {
           setIsAuthenticated(true);

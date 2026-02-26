@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 
 const Sidebar = () => {
-  // Navigation mapping to your design menu
   const mainLinks = [
     { to: "/dashboard", label: "Dashboard", icon: <LayoutGrid size={18} /> },
     { to: "/upload", label: "Upload CSV", icon: <UploadCloud size={18} /> },
@@ -67,10 +66,8 @@ const Sidebar = () => {
           </nav>
         </div>
 
-        {/* Spacer to push content down */}
         <div className="flex-1"></div>
 
-        {/* Bottom Section: Settings and Support */}
         <div className="mt-auto">
           <div className="pt-4 border-t border-[#E0E0E0]">
             <nav className="flex flex-col gap-1">

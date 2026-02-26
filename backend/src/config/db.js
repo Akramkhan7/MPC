@@ -14,25 +14,28 @@ const db = mysql.createPool({
 });
 
 const initDB = async () => {
+  // admins table
   await db.execute(`
     CREATE TABLE IF NOT EXISTS admins (
       id INT AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(50) NOT NULL ,
+      name VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL UNIQUE,
-      password_hash VARCHAR(255) NOT NULL
+      password_hash VARCHAR(255) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
-  console.log("Table ready");
+
+  console.log("Tables ready");
 };
 
-async function testdb() {
+async function testDB() {
   try {
     const connection = await db.getConnection();
     console.log("Database connected successfully...");
     connection.release();
   } catch (error) {
-    console.log("Database connection error:", error.message);
+    console.log("Database connection error:", error.message); 
   }
 }
 
-module.exports = { db, testdb, initDB };
+module.exports = { db, testDB, initDB };
